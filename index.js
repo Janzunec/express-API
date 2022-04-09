@@ -20,3 +20,7 @@ app.get('/post/all', getPosts.allPosts);
 app.get('/post/:id', getPosts.postByID);
 
 app.post('/post/add', postPosts.addPost);
+
+app.post('/post/delete/:id', postPosts.deletePost);
+
+app.post('/post/update/:id', postPosts.updatePost);

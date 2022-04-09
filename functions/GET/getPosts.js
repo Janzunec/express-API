@@ -16,7 +16,7 @@ const allPosts = (req, res) => {
 const postByID = async (req, res) => {
 	const { id } = req.params;
 	sql.connection().connection.query(
-		`SELECT * FROM posts WHERE post_ID=${id}`,
+		`SELECT post_ID, title, body, image, uploaded, edited, firstName, secondName, username, email FROM users, posts WHERE posts.post_ID=${id} AND posts.user=users.user_ID`,
 		async (err, rows, fields) => {
 			if (err) throw err;
 			res.send(rows);
