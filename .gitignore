@@ -5,4 +5,5 @@ package-lock.json
 *.gz
 
 #SQL
+database
 *.sql
