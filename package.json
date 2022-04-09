@@ -1,0 +1,27 @@
+{
+	"name": "expressapi",
+	"version": "1.0.0",
+	"description": "quick REST API with expressjs",
+	"main": "index.js",
+	"scripts": {
+		"test": "npm test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Janzunec/express-API.git"
+	},
+	"keywords": [
+		"API"
+	],
+	"author": "Jan Zunec",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Janzunec/express-API/issues"
+	},
+	"homepage": "https://github.com/Janzunec/express-API#readme",
+	"dependencies": {
+		"argon2": "^0.28.5",
+		"express": "^4.17.3",
+		"mysql": "^2.18.1"
+	}
+}
