@@ -1,6 +1,7 @@
 const sql = require('../database/connection');
 
 const allPosts = (req, res) => {
+	const now = new Date();
 	sql.connection().connection.query(
 		'SELECT * FROM posts',
 		(err, rows, fields) => {
@@ -8,7 +9,7 @@ const allPosts = (req, res) => {
 
 			console.log('Number of posts in database: ', rows.length);
 
-			res.send(rows);
+			res.json(rows);
 		}
 	);
 };
