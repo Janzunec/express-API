@@ -9,9 +9,7 @@ const addPost = (req, res) => {
 		`INSERT INTO posts(title, body, image, user, uploaded) VALUES("${postData.title}", "${postData.body}", "${postData.image}", ${postData.user}, '${today}')`,
 		(err, result) => {
 			if (err) throw err;
-
-			console.log(result);
-			res.send(result);
+			res.json(result);
 		}
 	);
 };
@@ -22,8 +20,7 @@ const deletePost = (req, res) => {
 		`DELETE FROM posts WHERE post_ID=${id}`,
 		(err, result) => {
 			if (err) throw err;
-
-			res.send(result);
+			res.json(result);
 		}
 	);
 };
@@ -39,9 +36,7 @@ const updatePost = (req, res) => {
 		`UPDATE posts SET title="${newPostData.title}", body="${newPostData.body}", image="${newPostData.image}", uploaded='${today}', edited=true WHERE post_ID=${id}`,
 		(err, result) => {
 			if (err) throw err;
-
-			console.log(result);
-			res.send(result);
+			res.json(result);
 		}
 	);
 };

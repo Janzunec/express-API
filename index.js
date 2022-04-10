@@ -8,7 +8,7 @@ const postPosts = require('./functions/POST/postPosts');
 
 // const argon2 = require('argon2');
 
-app.use(express.json());
+app.use(express.json({ limit: 1000000 }));
 
 app.use((req, res, next) => {
 	res.append('Access-Control-Allow-Origin', ['*']);
