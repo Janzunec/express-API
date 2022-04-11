@@ -3,7 +3,7 @@ const sql = require('../database/connection');
 const allPosts = (req, res) => {
 	const now = new Date();
 	sql.connection().connection.query(
-		'SELECT * FROM posts',
+		'SELECT * FROM posts, users WHERE posts.user = users.user_ID',
 		(err, rows, fields) => {
 			if (err) throw err;
 			res.json(rows);

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 const sql = require('./functions/database/connection');
 const getPosts = require('./functions/GET/getPosts');
