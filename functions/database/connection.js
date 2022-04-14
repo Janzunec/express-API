@@ -11,5 +11,5 @@ const connection = () => {
 };
 
 module.exports = {
-	connection,
+	connection: connection().connection,
 };

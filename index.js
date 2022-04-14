@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
-const sql = require('./functions/database/connection');
 const getPosts = require('./functions/GET/getPosts');
 const postPosts = require('./functions/POST/postPosts');
 
@@ -19,7 +18,6 @@ app.use((req, res, next) => {
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
-	sql.connection().connection.connect();
 });
 
 app.get('/post/all', getPosts.allPosts);

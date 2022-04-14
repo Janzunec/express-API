@@ -1,11 +1,12 @@
 const sql = require('../database/connection');
+const conn = sql.connection;
 
 const addPost = (req, res) => {
 	const postData = req.body;
 	const now = new Date();
 	const today = now.toISOString();
 
-	sql.connection().connection.query(
+	conn.query(
 		`INSERT INTO posts(title, body, image, user, uploaded) VALUES("${postData.title}", "${postData.body}", "${postData.image}", ${postData.user}, '${today}')`,
 		(err, result) => {
 			if (err) throw err;
@@ -16,13 +17,11 @@ const addPost = (req, res) => {
 
 const deletePost = (req, res) => {
 	const { id } = req.params;
-	sql.connection().connection.query(
-		`DELETE FROM posts WHERE post_ID=${id}`,
-		(err, result) => {
-			if (err) throw err;
-			res.json(result);
-		}
-	);
+
+	conn.query(`DELETE FROM posts WHERE post_ID=${id}`, (err, result) => {
+		if (err) throw err;
+		res.json(result);
+	});
 };
 
 const updatePost = (req, res) => {
@@ -32,7 +31,7 @@ const updatePost = (req, res) => {
 	const now = new Date();
 	const today = now.toISOString();
 
-	sql.connection().connection.query(
+	conn.query(
 		`UPDATE posts SET title="${newPostData.title}", body="${newPostData.body}", image="${newPostData.image}", uploaded='${today}', edited=true WHERE post_ID=${id}`,
 		(err, result) => {
 			if (err) throw err;
