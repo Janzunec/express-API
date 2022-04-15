@@ -18,23 +18,27 @@ const checkCredentials = (req, res) => {
 				});
 				return;
 			}
-			if (rows[0].password === enteredPassword) {
-				res.json({
-					userExists: true,
-					passwordMatch: true,
-					firstName: rows[0].firstName,
-					secondName: rows[0].secondName,
-					username: rows[0].username,
-					email: rows[0].email,
-				});
-				return;
-			}
-			if (rows[0].password !== enteredPassword && rows[0].password) {
-				res.json({
-					userExists: true,
-					passwordMatch: false,
-				});
-			}
+			bcrypt.compare(
+				enteredPassword,
+				rows[0].password,
+				function (err, result) {
+					if (result) {
+						res.json({
+							userExists: true,
+							passwordMatch: true,
+							firstName: rows[0].firstName,
+							secondName: rows[0].secondName,
+							username: rows[0].username,
+							email: rows[0].email,
+						});
+						return;
+					}
+					res.json({
+						userExists: true,
+						passwordMatch: false,
+					});
+				}
+			);
 		}
 	);
 };
