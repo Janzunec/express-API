@@ -4,8 +4,7 @@ const port = 4000;
 
 const getPosts = require('./functions/GET/getPosts');
 const postPosts = require('./functions/POST/postPosts');
-
-// const argon2 = require('argon2');
+const checkUserData = require('./functions/POST/checkUserData');
 
 app.use(express.json({ limit: 1000000 }));
 
@@ -23,6 +22,8 @@ app.listen(port, () => {
 app.get('/post/all', getPosts.allPosts);
 
 app.get('/post/:id', getPosts.postByID);
+
+app.post('/user/login', checkUserData.checkCredentials);
 
 app.post('/post/add', postPosts.addPost);
 

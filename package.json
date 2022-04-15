@@ -20,7 +20,7 @@
 	},
 	"homepage": "https://github.com/Janzunec/express-API#readme",
 	"dependencies": {
-		"argon2": "^0.28.5",
+		"bcrypt": "^5.0.1",
 		"express": "^4.17.3",
 		"mysql": "^2.18.1"
 	}
